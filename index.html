@@ -1,14 +1,65 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <p>This is a temporary paragraph</p>
-    </body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>SVG Fundamentals - Eye Project</title>
+    <meta
+      name="description"
+      content="First Project For Data Visualizations Course"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <svg id="eye-svg" viewBox="0 0 650 650">
+      <defs>
+        <clipPath id="clip-eye">
+          <path d="M 60 275 C 150 135, 430 200, 490 300" />
+          <path d="M 60 275 C 150 320, 430 330, 490 300" />
+        </clipPath>
+        <radialGradient id="eye-color">
+          <stop id="inner-color" offset="35%" stop-color="#B8D8E1" />
+          <stop id="outer-color" offset="95%" stop-color="#357388" />
+        </radialGradient>
+      </defs>
+
+      <!-- eyelids -->
+      <g>
+        <path
+          id="upper-eyelid"
+          d="M 60 275 C 150 135, 430 200, 490 300"
+          stroke="black"
+          stroke-width="5px"
+          fill="#f5f4f2"
+        />
+        <path
+          id="lower-eyelid"
+          d="M 60 275 C 150 320, 430 330, 490 300"
+          stroke="black"
+          stroke-width="5px"
+          fill="#f5f4f2"
+        />
+      </g>
+
+      <!-- inner eye circles -->
+      <g>
+        <circle
+          cx="300"
+          cy="250"
+          r="70"
+          fill="url(#eye-color)"
+          stroke="black"
+          stroke-width="5px"
+          clip-path="url(#clip-eye)"
+        />
+        <circle cx="300" cy="250" r="40" fill="black" />
+        <circle cx="320" cy="255" r="15" fill="white" />
+      </g>
+
+      <!-- eye lashes -->
+      <g id="eye-lash-group" />
+    </svg>
+  </body>
 </html>
